@@ -1,5 +1,13 @@
 # GitHub repositories and users autocomplete component
 
+## Installation
+
+Replace {release_tag} with the version you want to install (eg. "0.0.1").
+
+```bash
+npm i https://github.com/JaroslawPokropinski/github-autofill/releases/download/{release_tag}/github-autofill-{release_tag}.tgz
+```
+
 ## Usage
 
 ```jsx
