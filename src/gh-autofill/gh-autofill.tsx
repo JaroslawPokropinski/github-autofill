@@ -9,7 +9,10 @@ import { CombinedResult, GhAutofillProps, GhRepo, GhUser } from "./types";
 import { SearchResults } from "./search-results";
 import { focusElement } from "@/utils";
 
-export function GhAutofill({ debounceTime = 500 }: GhAutofillProps) {
+export function GhAutofill({
+  debounceTime = 500,
+  openOnClick,
+}: GhAutofillProps) {
   const [inputText, setInputText] = useState("");
   const [debouncedInputText, setDebouncedInputText] = useState("");
   const [isFocused, setIsFocused] = useState(false);
@@ -177,7 +180,9 @@ export function GhAutofill({ debounceTime = 500 }: GhAutofillProps) {
                 isLoading={isFetching}
                 onSelect={(item) => {
                   handleInputChange(item.name);
-                  window.open(item.url, "_blank");
+                  if (openOnClick) {
+                    window.open(item.url, "_blank");
+                  }
                 }}
               />
             </Box>

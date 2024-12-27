@@ -1,5 +1,6 @@
 export type GhAutofillProps = {
   debounceTime?: number;
+  openOnClick?: boolean;
 };
 
 export type SearchResultsProps = {
