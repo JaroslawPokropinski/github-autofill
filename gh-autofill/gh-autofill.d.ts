@@ -1,2 +1,2 @@
 import { GhAutofillProps } from './types';
-export declare function GhAutofill({ debounceTime, openOnClick, }: GhAutofillProps): import("react/jsx-runtime").JSX.Element;
+export declare function GhAutofill({ debounceTime, openOnClick, minimumChars, }: GhAutofillProps): import("react/jsx-runtime").JSX.Element;

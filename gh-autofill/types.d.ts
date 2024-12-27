@@ -1,6 +1,10 @@
 export type GhAutofillProps = {
+    /** Delay in milliseconds before searching for results */
     debounceTime?: number;
+    /** Open GitHub user or repository on item click */
     openOnClick?: boolean;
+    /** Minimum number of characters to initialize search */
+    minimumChars?: number;
 };
 export type SearchResultsProps = {
     results: CombinedResult[];
