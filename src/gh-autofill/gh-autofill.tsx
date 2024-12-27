@@ -151,6 +151,8 @@ export function GhAutofill({
             }
           >
             <Box
+              data-testid="dropdown"
+              role="menu"
               ref={dropdownRef}
               pos="absolute"
               top={`${inputBounds.bottom + 4}px`}
