@@ -151,7 +151,7 @@ describe("GhAutofill", () => {
     await user.type(input, "abc");
     await act(() => vi.advanceTimersByTime(1000));
 
-    expect(screen.queryByText("No results found")).toBeTruthy();
+    expect(screen.getByText("No results found")).toBeVisible();
   });
 
   it("supports keyboard navigation", async () => {

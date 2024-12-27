@@ -12,6 +12,7 @@ import { focusElement } from "@/utils";
 export function GhAutofill({
   debounceTime = 500,
   openOnClick,
+  minimumChars = 3,
 }: GhAutofillProps) {
   const [inputText, setInputText] = useState("");
   const [debouncedInputText, setDebouncedInputText] = useState("");
@@ -37,7 +38,7 @@ export function GhAutofill({
   };
 
   const handleInputChange = (value: string) => {
-    setIsFetching(value.length >= 3); // set fetching to true to immidiately display the spinner
+    setIsFetching(value.length >= minimumChars); // set fetching to true to immidiately display the spinner
     setDebouncedInputText("");
     setInputText(value);
     debouncedSetInputText(value);
@@ -52,7 +53,7 @@ export function GhAutofill({
       q: debouncedInputText,
       per_page: "50",
     }).toString()}`,
-    debouncedInputText.length >= 3
+    debouncedInputText.length >= minimumChars
   );
 
   const {
@@ -64,7 +65,7 @@ export function GhAutofill({
       q: debouncedInputText,
       per_page: "50",
     }).toString()}`,
-    debouncedInputText.length >= 3
+    debouncedInputText.length >= minimumChars
   );
 
   const combinedResults = useMemo<CombinedResult[]>(
@@ -144,7 +145,8 @@ export function GhAutofill({
             pointerEvents="none"
             display={
               isFocused &&
-              combinedResults.length > 0 &&
+              // combinedResults.length > 0 &&
+              inputText.length >= minimumChars &&
               !(usersError || reposError)
                 ? "block"
                 : "none"
@@ -165,13 +167,6 @@ export function GhAutofill({
               paddingY="4px"
               paddingX="8px"
               pointerEvents="auto"
-              display={
-                isFocused &&
-                combinedResults.length > 0 &&
-                !(usersError || reposError)
-                  ? "block"
-                  : "none"
-              }
               onFocus={() => updateFocus()}
               onBlur={() => setTimeout(() => updateFocus(), 0)}
             >
